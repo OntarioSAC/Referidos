@@ -1,0 +1,133 @@
+html {
+  text-align: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.App-logo {
+  /* height: 15vmin;
+  pointer-events: none; */
+  width: 200px;
+  height: 170px;
+  object-fit: none;
+}
+
+.App-logo1 {
+  /* height: 15vmin;
+  pointer-events: none; */
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  /* border: 3px solid #ff9daa; */
+}
+
+.App-logo2 {
+  position: absolute;
+  width: 405px;
+  /* height: 150px; */
+  top: 245px; /* ajustar los valores para mover la imagen */
+  left: 333px;
+  z-index: 5;
+  border-radius: 13%;
+}
+
+
+
+.App-logo3 {
+  position: absolute;
+  width: 425px;
+  /* height: 150px; */
+  top: 245px; /* ajustar los valores para mover la imagen */
+  left: 850px;
+  z-index: 5;
+  border-radius: 10%;
+}
+
+/* form {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+} */
+
+footer {
+  background-color: #253040;
+  min-height: 10vh;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(255 241 242);
+  caret-color: #92c021;
+}
+
+h1 {
+  color: white;
+  font-size: 150%;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h2 {
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+div {
+  color: #92c021;
+  font-size: 27px;
+  font-weight: 600;
+  border-color: #92c021;
+}
+
+input {
+  font-size: 23px;
+  color: white !important;
+  background-color: black;
+  text-transform: capitalize;
+  border-radius: 30px !important;
+  writing-mode: horizontal-tb;
+  text-align: center;
+}
+
+input::placeholder {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  /* font-style: italic; */
+}
+
+input:focus {
+  outline: none;
+}
+
+textarea::placeholder {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  /* font-style: italic; */
+}
+
+textarea:focus {
+  outline: none;
+}
+
+textarea {
+  font-size: 20px;
+  color: white !important;
+  background-color: black;
+  /* border-radius: 30px !important; */
+  text-transform: capitalize;
+}
+
+button {
+  background-color: #92c021;
+  color: black;
+  font-weight: 600;
+}
+

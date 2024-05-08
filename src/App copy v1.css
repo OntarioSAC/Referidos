@@ -1,0 +1,218 @@
+html {
+  text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("/public/santorini/NUEVA_VISTA_CLUB.jpg");
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+.App-logo {
+  /* height: 15vmin;
+  pointer-events: none; */
+  width: 200px;
+  height: 170px;
+  object-fit: none;
+}
+
+.App-logo1 {
+  /* height: 15vmin;
+  pointer-events: none; */
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  /* border: 3px solid #ff9daa; */
+}
+
+.App-logo2 {
+  position: absolute;
+  width: 405px;
+  /* height: 150px; */
+  top: 245px; /* ajustar los valores para mover la imagen */
+  left: 333px;
+  z-index: 5;
+  border-radius: 13%;
+}
+
+@media (max-height: 876px) {
+  .App-logo2 {
+    position: absolute;
+    width: 405px;
+    top: 250px; /* ajustar los valores para mover la imagen */
+    left: 53px;
+    z-index: 5;
+    border-radius: 13%;
+  }
+}
+
+@media (min-width: 430px) {
+  .App-logo2 {
+    position: absolute;
+    width: 405px;
+    top: 340px; /* ajustar los valores para mover la imagen */
+    left: 333px;
+    z-index: 5;
+    border-radius: 13%;
+  }
+}
+
+.App-logo3 {
+  position: absolute;
+  width: 425px;
+  /* height: 150px; */
+  top: 245px; /* ajustar los valores para mover la imagen */
+  left: 850px;
+  z-index: 5;
+  border-radius: 10%;
+}
+
+@media (max-height: 877px) {
+  .App-logo3 {
+    position: absolute;
+    width: 425px;
+    /* height: 150px; */
+    top: 345px; /* ajustar los valores para mover la imagen */
+    left: 850px;
+    z-index: 5;
+    border-radius: 10%;
+  }
+}
+
+@media (max-height: 414px) {
+  .App-logo3 {
+    position: absolute;
+    width: 435px;
+    /* height: 150px; */
+    top: 310px; /* ajustar los valores para mover la imagen */
+    left: 846px;
+    z-index: 5;
+    border-radius: 10%;
+  }
+}
+
+.App-header {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+form {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+footer {
+  background-color: red;
+  min-height: 10vh;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(255 241 242);
+  caret-color: #92c021;
+}
+
+h1 {
+  color: white;
+  font-size: 150%;
+  /* font-size: 45px; */
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h2 {
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+div {
+  color: #92c021;
+  font-size: 27px;
+  font-weight: 600;
+  border-color: #92c021;
+}
+
+input {
+  font-size: 25px;
+  color: white !important;
+  background-color: black;
+  text-transform: capitalize;
+  border-radius: 30px !important;
+  writing-mode: horizontal-tb;
+  text-align: center;
+}
+
+input::placeholder {
+  color: white;
+  font-size: 18px;
+  /* text-align: center; */
+  align-items: center;
+  justify-content: center;
+  /* font-style: italic; */
+}
+
+input:focus {
+  outline: none;
+}
+
+textarea::placeholder {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  /* font-style: italic; */
+}
+
+textarea:focus {
+  outline: none;
+}
+
+textarea {
+  font-size: 25px;
+  color: white !important;
+  background-color: black;
+  border-radius: 30px !important;
+  text-transform: capitalize;
+}
+
+button {
+  background-color: #92c021;
+  color: black;
+  font-weight: 600;
+}
+
+@media only screen and (min-width: 600px) {
+  .form-container {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+  }
+
+  .form-container.show {
+    opacity: 1;
+    max-height: 688px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .form-container {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+  }
+
+  .form-container.show {
+    opacity: 1;
+    max-height: 688px; /* Altura máxima del formulario, ajusta según sea necesario */
+  }
+}
