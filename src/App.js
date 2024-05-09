@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 
 import logo_ont from "./referido/Objeto-inteligente-vectorial.png";
-import celu from "./referido/Objeto-inteligente-vectorial-copia-combinado.png";
+import celu from "./referido/celular.png";
 import refie from "./referido/ConoceNuestrosPremios.png";
 import uno from "./referido/1-(combinado).png";
 import dos from "./referido/2-(combinado).png";
@@ -33,34 +33,24 @@ function App() {
     aceptarTerminos: false,
   });
   const [error, setError] = useState("");
-
-  let iconStyles = {
-    color: "#92c021",
-    fontSize: "25px",
-    // margin: "6px 3px 5px 6px",
-    margin: "auto auto auto 4",
-  };
-  let iconStyles1 = {
-    color: "white",
-    fontSize: "100px",
-    // margin: "6px 3px 5px 125px",
-    margin: "0 auto",
-  };
-  let iconStyles2 = {
-    color: "white",
-    fontSize: "100px",
-    // margin: "6px 3px 5px 136px",
-    margin: "0 auto",
-  };
-
   const [showForm, setShowForm] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 900);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 900);
+    };
+
+    window.addEventListener("resize", handleResize);
+
     const timer = setTimeout(() => {
       setShowForm(true);
     }, 1000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const handleChange = (event) => {
@@ -104,85 +94,178 @@ function App() {
       console.log(error);
     }
   };
-  //<form style={{ maxWidth: 500, margin: "auto" }} onSubmit={handleSubmit}>
+
+  let iconStyles = {
+    color: "#92c021",
+    fontSize: "25px",
+    margin: "auto auto auto 4",
+  };
+  let iconStyles1 = {
+    color: "white",
+    fontSize: "100px",
+    margin: "0 auto",
+  };
+  let iconStyles2 = {
+    color: "white",
+    fontSize: "100px",
+    margin: "0 auto",
+  };
+
   return (
     <>
-      <div className="py-12 px-8 bg-gradient-to-r from-[#5aa010] to-[#add53d] grid grid-flow-col gap-2 item-center">
+      <div
+        className="py-12 px-8"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(90,160,16,1) 11%, rgba(173,213,61,1) 65%)",
+        }}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 m-auto gap-2">
-          <img src={celu} alt="celu" className="w-[450px] m-auto lg:w-full" />
-          <img src={refie} alt="refie" className="w-[450px] m-auto lg:w-full" />
+          <img
+            src={celu}
+            alt="celu"
+            style={{
+              width: "35%",
+              maxWidth: "50%",
+              display: "block",
+              margin: "auto",
+              paddingBottom: "20px",
+              animation: "floatAnimation 3s ease-in-out infinite", // Agregar la animación de flotación
+            }}
+          />
+          <img
+            src={refie}
+            alt="refie"
+            style={{
+              width: "600px",
+              margin: "auto",
+              display: "block",
+              marginLeft: isSmallScreen ? "0" : "-30px",
+            }}
+          />
         </div>
       </div>
-      <div className="grid grid-rows-3 grid-flow-col gap-4 place-items-center pt-12">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div></div>
-          <img
-            src={uno}
-            alt="uno"
-            className="col-span-2 lg:col-span-1 m-auto w-[180px]"
-          />
-          <p className="col-span-2 text-justify px-12 py-3">
-            <spam className="text-[#253040] font-bold">
-              Registra a tu referido en el siguiente formulario
-            </spam>
-            <br />
-            <spam className="text-[#253040] text-[20px]">
-              Debes registrar los datos de tu referido en el formulario REFIERE
-              AQUÍ que encontraras en nuestra página web.
-            </spam>
-          </p>
+
+      {/* Contenedor de indicaciones */}
+      <div className="grid grid-rows-3 grid-flow-col gap-4 pt-12">
+        {/* primera fila */}
+        <div
+          className={
+            isSmallScreen
+              ? "inset-0 flex flex-col items-center"
+              : "row align-items-center justify-content-center"
+          }
+        >
+          <div className="col-3">
+            <img
+              src={uno}
+              alt="uno"
+              className="col-span-2 lg:col-span-1 m-auto w-[180px]"
+            />
+          </div>
+
+          <div className={isSmallScreen ? "col-6" : "col-4"}>
+            <p className="col-span-1 text-justify py-3">
+              <spam className="text-[#253040] font-bold">
+                Registra a tu referido en el formulario
+              </spam>
+              <br />
+              <spam className="text-[#253040] text-[20px]">
+                Debes registrar los datos de tu referido en el formulario
+                REFIERE AQUÍ que encontraras en nuestra página web.
+              </spam>
+            </p>
+          </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-          <div></div>
-          <img
-            src={dos}
-            alt="dos"
-            className="col-span-2 lg:col-span-1 m-auto w-[180px]"
-          />
-          <p className="col-span-2 text-justify px-12 py-3">
-            <spam className="text-[#253040] font-bold">
-              Tu referido debe comprar al menos un lote y comprobar que tú lo
-              referiste
-            </spam>
-            <br />
-            <spam className="text-[#253040] text-[20px]">
-              Tu referido debe figurar como propietario o copropietario al
-              momento de la firma de su contrato.
-            </spam>
-          </p>
+        {/* segunda fila */}
+        <div
+          className={
+            isSmallScreen
+              ? "inset-0 flex flex-col justify-between items-center"
+              : "row align-items-center justify-content-center"
+          }
+        >
+          <div className="col-3">
+            <img
+              src={dos}
+              alt="dos"
+              className="col-span-2 lg:col-span-1 m-auto w-[180px]"
+            />
+          </div>
+
+          <div className={isSmallScreen ? "col-6" : "col-4"}>
+            <p className="col-span-1 text-justify py-3">
+              <spam className="text-[#253040] font-bold">
+                Tu referido debe comprar al menos un lote y comprobar que tú lo
+                referiste
+              </spam>
+              <br />
+              <spam className="text-[#253040] text-[20px]">
+                Tu referido debe figurar como propietario o copropietario al
+                momento de la firma de su contrato.
+              </spam>
+            </p>
+          </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-          <div></div>
-          <img
-            src={tres}
-            alt="tres"
-            className="col-span-2 lg:col-span-1 m-auto w-[180px]"
-          />
-          <p className="col-span-2 text-justify px-12 py-3">
-            <spam className="text-[#253040] font-bold">
-              Si tu referido compra, ¡GANAS!
-            </spam>
-            <br />
-            <spam className="text-[#253040] text-[20px]">
-              Puedes ganar hasta s/700 en efectivo con tu referencia exitosa
-              realizada antes de la fecha límite.
-            </spam>
-          </p>
+        {/* tercera fila */}
+        <div
+          className={
+            isSmallScreen
+              ? "inset-0 flex flex-col items-center"
+              : "row align-items-center justify-content-center"
+          }
+        >
+          <div className="col-3">
+            <img
+              src={tres}
+              alt="tres"
+              className="col-span-2 lg:col-span-1 m-auto w-[180px]"
+            />
+          </div>
+
+          <div className={isSmallScreen ? "col-6" : "col-4"}>
+            <p className="col-span-1 text-justify py-3">
+              <spam className="text-[#253040] font-bold">
+                Si tu referido compra, ¡GANAS!
+              </spam>
+              <br />
+              <spam className="text-[#253040] text-[20px]">
+                Puedes ganar hasta s/700 en efectivo con tu referencia exitosa
+                realizada antes de la fecha límite.
+              </spam>
+            </p>
+          </div>
         </div>
       </div>
+      {/* Instrucciones fin */}
+
+      {/* Titulo inicio formularios */}
       <div>
         <p className="text-[#253040] font-black text-6xl py-12">REFIERE AQUÍ</p>
       </div>
+
+      {/* formulario */}
       <form
         onSubmit={handleSubmit}
         className={`form-container ${showForm ? "show" : ""}`}
       >
-        <div className=" m-auto">
-          {/* <div className="gap-x-16 gap-y-2 max-w-96 m-auto"> */}
+        <div>
           <div className="grid grid-cols-1 lg:grid-cols-2 m-auto">
-            <div className="p-4 mx-auto my-12 w-[400px] border-4 rounded-3xl bg-gradient-to-r from-[#5aa010] to-[#add53d]">
+            <div
+              style={{
+                padding: "1rem",
+                margin: "3rem auto",
+                width: "400px",
+                borderStyle: "solid",
+                borderRadius: "1.5rem",
+                backgroundImage: "linear-gradient(to right, #5aa010, #add53d)",
+                boxShadow: "0 8px 18px rgba(0, 0, 0, 2)", // Añadir sombra
+              }}
+            >
               <FaIdBadge style={iconStyles2} />
-              <h2 className="pb-4">ingresa tus datos</h2>
+              <h4 style={{ paddingBottom: "1rem", color: "white" }}>
+                ingresa tus datos
+              </h4>
               <div className="pb-4">
                 <div className="grid grid-cols-10 place-items-start bg-black rounded-3xl">
                   <FaRegUserCircle style={iconStyles} />
