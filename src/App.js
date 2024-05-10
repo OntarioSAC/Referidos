@@ -99,16 +99,17 @@ function App() {
     color: "#92c021",
     fontSize: "25px",
     margin: "auto auto auto 4",
+    marginLeft: "15px",
   };
   let iconStyles1 = {
     color: "white",
     fontSize: "100px",
-    margin: "0 auto",
+    margin: "15 auto",
   };
   let iconStyles2 = {
     color: "white",
     fontSize: "100px",
-    margin: "0 auto",
+    margin: "15 auto",
   };
 
   return (
@@ -148,12 +149,11 @@ function App() {
 
       {/* Contenedor de indicaciones */}
       <div className="grid grid-rows-3 grid-flow-col gap-4 pt-12">
-        {/* primera fila */}
         <div
           className={
             isSmallScreen
               ? "inset-0 flex flex-col items-center"
-              : "row align-items-center justify-content-center"
+              : "row me-0 align-items-center justify-content-center"
           }
         >
           <div className="col-3">
@@ -177,12 +177,12 @@ function App() {
             </p>
           </div>
         </div>
-        {/* segunda fila */}
+
         <div
           className={
             isSmallScreen
               ? "inset-0 flex flex-col justify-between items-center"
-              : "row align-items-center justify-content-center"
+              : "row me-0 align-items-center justify-content-center"
           }
         >
           <div className="col-3">
@@ -207,12 +207,12 @@ function App() {
             </p>
           </div>
         </div>
-        {/* tercera fila */}
+
         <div
           className={
             isSmallScreen
               ? "inset-0 flex flex-col items-center"
-              : "row align-items-center justify-content-center"
+              : "row me-0 align-items-center justify-content-center"
           }
         >
           <div className="col-3">
@@ -263,19 +263,19 @@ function App() {
               }}
             >
               <FaIdBadge style={iconStyles2} />
-              <h4 style={{ paddingBottom: "1rem", color: "white" }}>
-                ingresa tus datos
-              </h4>
+              <h2 style={{ paddingBottom: "1rem", color: "white" }}>
+                INGRESA TUS DATOS
+              </h2>
               <div className="pb-4">
                 <div className="grid grid-cols-10 place-items-start bg-black rounded-3xl">
                   <FaRegUserCircle style={iconStyles} />
                   <input
-                    placeholder="Nombres y Apellidos"
+                    placeholder="Nombres y apellidos"
                     type="text"
-                    className="border-black"
                     name="cliente_nombres"
                     value={data.cliente_nombres}
                     onChange={handleChange}
+                    style={{ textTransform: "none" }}
                   />
                 </div>
               </div>
@@ -283,9 +283,9 @@ function App() {
                 <div className="grid grid-cols-10 place-items-start bg-black rounded-3xl">
                   <FaAddressCard style={iconStyles} />
                   <input
-                    type="text"
                     placeholder="N° DNI"
-                    className="form-control"
+                    type="text"
+                    //className="form-control"
                     name="cliente_dni"
                     value={data.cliente_dni}
                     onChange={handleChange}
@@ -297,11 +297,12 @@ function App() {
                   <FaMailBulk style={iconStyles} />
                   <input
                     type="text"
-                    placeholder="Email"
-                    className="form-control"
+                    placeholder="Correo eletrónico"
+                    //className="form-control"
                     name="cliente_correo"
                     value={data.cliente_correo}
                     onChange={handleChange}
+                    style={{ textTransform: "none" }}
                   />
                 </div>
               </div>
@@ -310,11 +311,12 @@ function App() {
                   <FaPhoneAlt style={iconStyles} />
                   <input
                     type="text"
-                    placeholder="Número de Celular"
-                    className="form-control"
+                    placeholder="Número de celular"
+                    //className="form-control"
                     name="cliente_celular"
                     value={data.cliente_celular}
                     onChange={handleChange}
+                    style={{ textTransform: "none" }}
                   />
                 </div>
               </div>
@@ -328,12 +330,12 @@ function App() {
                 <div className="grid grid-cols-10 place-items-start bg-black rounded-3xl">
                   <FaRegUserCircle style={iconStyles} />
                   <input
-                    placeholder="Nombres y Apellidos"
+                    placeholder="Nombres y apellidos"
                     type="text"
-                    className="border-black"
                     name="referido_nombres"
                     value={data.referido_nombres}
                     onChange={handleChange}
+                    style={{ textTransform: "none" }}
                   />
                 </div>
               </div>
@@ -343,7 +345,7 @@ function App() {
                   <input
                     type="text"
                     placeholder="N° DNI"
-                    className="form-control"
+                    //className="form-control"
                     name="referido_dni"
                     value={data.referido_dni}
                     onChange={handleChange}
@@ -355,11 +357,12 @@ function App() {
                   <FaMailBulk style={iconStyles} />
                   <input
                     type="text"
-                    placeholder="Email"
-                    className="form-control"
+                    placeholder="Correo electrónico"
+                    //className="form-control"
                     name="referido_correo"
                     value={data.referido_correo}
                     onChange={handleChange}
+                    style={{ textTransform: "none" }}
                   />
                 </div>
               </div>
@@ -368,11 +371,12 @@ function App() {
                   <FaPhoneAlt style={iconStyles} />
                   <input
                     type="text"
-                    placeholder="Número de Celular"
-                    className="form-control"
+                    placeholder="Número de celular"
+                    //className="form-control"
                     name="referido_celular"
                     value={data.referido_celular}
                     onChange={handleChange}
+                    style={{ textTransform: "none" }}
                   />
                 </div>
               </div>
@@ -408,6 +412,7 @@ function App() {
           </button>
         </div>
       </form>
+
       <div className="bg-[#253040] p-12">
         <p className="text-[40px] font-black">
           <spam className="text-white">¡COMPARTE LA ALEGRÍA Y</spam>
