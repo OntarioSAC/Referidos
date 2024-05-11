@@ -1,21 +1,79 @@
 import { useState, useEffect } from "react";
 const Forms = () => {
-    // const [data, setData] = useState({
-    //     cliente_nombres: "",
-    //     cliente_celular: "",
-    //     cliente_dni: "",
-    //     cliente_correo: "",
-    //     referido_nombres: "",
-    //     referido_celular: "",
-    //     referido_dni: "",
-    //     referido_correo: "",
-    //     date: new Date().toString(),
-    //     aceptarTerminos: false,
-    // });
+    const [data, setData] = useState({
+        cliente_nombres: "",
+        cliente_celular: "",
+        cliente_dni: "",
+        cliente_correo: "",
+        referido_nombres: "",
+        referido_celular: "",
+        referido_dni: "",
+        referido_correo: "",
+        date: new Date().toString(),
+        aceptarTerminos: false,
+    });
+    const [error, setError] = useState("");
+    const [showForm, setShowForm] = useState(false);
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 900);
 
-    // const [error, setError] = useState("");
-    // const [showForm, setShowForm] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 900);
+        };
 
+        window.addEventListener("resize", handleResize);
+
+        const timer = setTimeout(() => {
+            setShowForm(true);
+        }, 1000);
+
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    const handleChange = (event) => {
+        const { name, value, type, checked } = event.target;
+        setData((prevData) => ({
+            ...prevData,
+            [name]: type === "checkbox" ? checked : value,
+        }));
+        setError("");
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (
+            !data.cliente_nombres.trim() ||
+            !data.cliente_celular.trim() ||
+            !data.cliente_dni.trim() ||
+            !data.cliente_correo.trim() ||
+            !data.referido_nombres.trim() ||
+            !data.referido_celular.trim() ||
+            !data.referido_dni.trim() ||
+            !data.referido_correo.trim() ||
+            !data.aceptarTerminos
+        ) {
+            setError("Por favor, llene todos los campos y acepte los términos.");
+            return;
+        }
+        try {
+            const res = await fetch("https://sheetdb.io/api/v1/om94vh0towgqh", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (res.ok) {
+                window.location.replace("");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <>
@@ -24,13 +82,12 @@ const Forms = () => {
                     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
                     .contenedorForm {
-                        background: #f6f5f7;
-                        display: flex;
+                        background: #fff;
                         justify-content: center;
                         align-items: center;
                         flex-direction: column;
-                        font-family: 'Montserrat', sans-serif;
-                        height: 100vh;
+                        // font-family: 'Montserrat', sans-serif;
+                        height: 70vh;
                     }
 
                     .titleForm {
@@ -46,7 +103,7 @@ const Forms = () => {
                         margin: 0;
                         font-size: 17px;
                         color: #FFFFFF;
-                        padding-bottom:30px;
+                      
                     }
                   
 
@@ -110,9 +167,8 @@ const Forms = () => {
 
                     .form-container {
                         position: absolute;
-                        top: 0;
+                       
                         height: 100%;
-                        transition: all 0.6s ease-in-out;
                     }
 
                     .sign-in-container {
@@ -144,27 +200,110 @@ const Forms = () => {
                 `}
             </style>
 
-            <div className="container" id="container">
-                <div className="form-container sign-in-container">
-                    <form action="#">
-                        <h1 className="titleForm">INGRESA TUS DATOS</h1>
-                        <input type="text" placeholder="Nombres y Apellidos" />
-                        <input type="text" placeholder="N° DNI" />
-                        <input type="text" placeholder="Correo electrónico" />
-                        <input type="text" placeholder="N° de celular" />
+            <div className="contenedorForm">
+                <div className="container" id="container">
+                    <div className="form-container sign-in-container">
+                        <form onSubmit={handleSubmit}>
+                            <h1 className="titleForm">INGRESA TUS DATOS</h1>
+                            <input
+                                type="text"
+                                placeholder="Nombres y Apellidos"
+                                name="cliente_nombres"
+                                value={data.cliente_nombres}
+                                onChange={handleChange}
+                            />
+                            <input
+                                type="text"
+                                placeholder="N° DNI"
+                                name="cliente_dni"
+                                value={data.cliente_dni}
+                                onChange={handleChange}
+                            />
 
-                    </form>
+                            <input
+                                type="text"
+                                placeholder="Correo electrónico"
+                                name="cliente_correo"
+                                value={data.cliente_correo}
+                                onChange={handleChange}
+                            />
+                            <input
+                                type="text"
+                                placeholder="N° de celular"
+                                name="cliente_celular"
+                                value={data.cliente_celular}
+                                onChange={handleChange}
+                            />
+
+                        </form>
+                    </div>
+                    <div className="overlay-container">
+                        <form className="overlay" onSubmit={handleSubmit}>
+                            <h1 className="titleFormRef">INGRESA LOS DATOS DE TU <h1 style={{ color: "#223346", fontSize:"17px", fontWeight:"bold" }}>REFERIDO</h1></h1>
+                            <input
+                                type="text"
+                                placeholder="Nombres y Apellidos"
+                                name="referido_nombres"
+                                value={data.referido_nombres}
+                                onChange={handleChange}
+                            />
+                            <input
+                                type="text"
+                                placeholder="N° DNI"
+                                name="referido_dni"
+                                value={data.referido_dni}
+                                onChange={handleChange}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Correo electrónico"
+                                name="referido_correo"
+                                value={data.referido_correo}
+                                onChange={handleChange}
+                            />
+                            <input
+                                type="text"
+                                placeholder="N° de celular"
+                                name="referido_celular"
+                                value={data.referido_celular}
+                                onChange={handleChange}
+                            />
+                        </form>
+                    </div>
+
+                    <div className="container">
+                        <input
+                            type="checkbox"
+                            id="aceptarTerminos"
+                            name="aceptarTerminos"
+                            className="w-6 h-6 mx-[15px]"
+                            checked={data.aceptarTerminos}
+                            onChange={handleChange}
+                        />
+                        <label htmlFor="aceptarTerminos">
+                            Acepto los términos y condiciones
+                            <br />
+                            <a
+                                href="https://inmobiliariaontario.com/terminos-condiciones-campana-afiliados/"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-red-500"
+                            >
+                                "Abrir terminos y condiciones"
+                            </a>
+                        </label>
+                    </div>
+
+                    {error && <p style={{ color: "red" }}>{error}</p>}
+                    <div>
+                        <button className="bg-gradient-to-r from-[#5aa010] to-[#add53d] btn btn-primary transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ring-2 ring-black-500 ring-offset-4 ring-offset-slate-50 rounded-lg pl-2 pr-2 text-white">
+                            Registrar
+                        </button>
+                    </div>
                 </div>
-                <div className="overlay-container">
-                    <form className="overlay">
-                        <h1 className="titleFormRef">INGRESA LOS DATOS DE TU <h1 style={{ color: "#223346" }}>REFERIDO</h1></h1>
-                        <input type="text" placeholder="Nombres y Apellidos" />
-                        <input type="text" placeholder="N° DNI" />
-                        <input type="text" placeholder="Correo electrónico" />
-                        <input type="text" placeholder="N° de celular" />
-                    </form>
-                </div>
+
             </div>
+            
         </>
     );
 };

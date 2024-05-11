@@ -61,18 +61,9 @@ footer {
   caret-color: #92c021;
 }
 
-h1 {
-  color: white;
-  font-size: 150%;
-  font-weight: 800;
-  text-transform: uppercase;
-}
 
-h2 {
-  color: white;
-  font-weight: 700;
-  text-transform: uppercase;
-}
+
+
 
 div {
   color: #92c021;
@@ -81,37 +72,17 @@ div {
   border-color: #92c021;
 }
 
-input {
-  font-size: 23px;
-  color: white !important;
-  background-color: transparent; /* Hacer el fondo transparente */
-  text-transform: capitalize;
-  border-radius: 30px !important;
-  writing-mode: horizontal-tb;
-  text-align: center;
-}
+
 
 input::placeholder {
-  color: white;
-  font-size: 18px;
-  text-align: center;
-  align-items: center;
+
+  font-size: 15px;
+
   justify-content: center;
   /* font-style: italic; */
 }
 
-input:focus {
-  outline: none;
-}
 
-textarea::placeholder {
-  color: white;
-  font-size: 18px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  /* font-style: italic; */
-}
 
 textarea:focus {
   outline: none;
